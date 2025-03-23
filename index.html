@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Programmer's portfolio</title>
+    <script src="{{ url_for('static', filename='update.js') }}"></script>
+</head>
+
+<body>
+    <h1>Programmer's portfolio</h1>
+    <h3>Add project:</h3>
+    <form>
+        <div>
+            <input type="text" name="prod_name" id="prod_name">
+            <label for="prod_name">Project name</label>
+        </div>
+        <div>
+            <input type="text" name="price" id="price">
+            <label for="price">link</label>
+        </div>
+        <button onClick="addProduct()">Add</button>
+        
+
+    <ul>
+        {% for product in products_list %}
+        <li>
+            <div>
+                <div>{{ product['prod_name'] }}</div>
+                <div>{{ product['price'] }} </div>
+                <input value="{{product['id']}}" onChange="updateProd(this)" name="in_stock" type="checkbox" {% if product.in_stock %} checked {% endif %}>
+                <label for="in_stock">Complete</label>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
